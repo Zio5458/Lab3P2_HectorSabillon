@@ -12,10 +12,10 @@ import java.util.ArrayList;
  */
 public class Compras {
     
-    private int total;
+    private double total;
     private ArrayList compras = new ArrayList();
 
-    public Compras(int total) {
+    public Compras(double total) {
         this.total = total;
     }
 
@@ -23,7 +23,7 @@ public class Compras {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 

@@ -32,9 +32,6 @@ public class Lab3P2_HectorSabillon {
                     break;
                 }
                 case 3: {
-                    break;
-                }
-                case 4: {
                     System.out.println("---MODIFICAR---"
                             + "\n1 <- Comida"
                             + "\n2 <- Bebida");
@@ -46,7 +43,7 @@ public class Lab3P2_HectorSabillon {
                             break;
                         }
                         case 2: {
-
+                            modBebida();
                             break;
                         }
                         default:
@@ -55,10 +52,30 @@ public class Lab3P2_HectorSabillon {
                     }
                     break;
                 }
+                case 4: {
+                    System.out.println("---ELIMINAR---"
+                            + "\n1 <- Comida"
+                            + "\n2 <- Bebida");
+                    int op = sc.nextInt();
+                    eliminar(op);
+                }
                 case 5: {
+                    System.out.println("---COMIDAS---");
+                    listarComidas();
+                    System.out.println("---BEBIDAS---");
+                    listarBebidas();
                     break;
                 }
                 case 6: {
+                    int total = 0;
+                    System.out.println("---COMIDAS---");
+                    listarComidas();
+                    System.out.println("---BEBIDAS---");
+                    listarBebidas();
+                    
+                    System.out.println("Ingrese indice del producto a comprar: ");
+                    int index = sc.nextInt();
+                    
                     break;
                 }
                 case 7: {
@@ -214,4 +231,27 @@ public class Lab3P2_HectorSabillon {
         }
     }
 
+    public static void eliminar(int i) {
+        switch (i) {
+            case 1: {
+                listarComidas();
+                System.out.println("Ingrese indice de la comida a eliminar: ");
+                int index = sc.nextInt();
+                lista.remove(index);
+                break;
+            }
+            case 2: {
+                listarBebidas();
+                System.out.println("Ingrese indice de la bebida a eliminar: ");
+                int index = sc.nextInt();
+                lista.remove(index);
+                break;
+            }
+            default:
+                System.out.println("Opcion invalida");
+                break;
+        }
+    }
+
+    
 }
