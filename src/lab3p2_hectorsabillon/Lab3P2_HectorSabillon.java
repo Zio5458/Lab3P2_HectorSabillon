@@ -46,7 +46,7 @@ public class Lab3P2_HectorSabillon {
                             break;
                         }
                         case 2: {
-                            
+
                             break;
                         }
                         default:
@@ -118,14 +118,14 @@ public class Lab3P2_HectorSabillon {
         }
     }
 
-    public static void listarBebidas(){
+    public static void listarBebidas() {
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i) instanceof Bebidas) {
                 System.out.println(i + " <- " + lista.get(i));
             }
         }
     }
-    
+
     public static void modComida() {
         listarComidas();
         System.out.println("Ingrese indice de la comida a modificar: ");
@@ -176,10 +176,10 @@ public class Lab3P2_HectorSabillon {
                 System.out.println("Opcion no valida");
                 break;
         }
-        
+
     }
 
-    public static void modBebida(){
+    public static void modBebida() {
         listarBebidas();
         System.out.println("Ingrese indice de la bebida a modificar: ");
         int index = sc.nextInt();
@@ -189,14 +189,23 @@ public class Lab3P2_HectorSabillon {
                 + "\n2 <- Precio"
                 + "\n3 <- Tamaño");
         int aspecto = sc.nextInt();
-        switch(aspecto){
-            case 1:{
+        switch (aspecto) {
+            case 1: {
+                System.out.println("Ingrese nombre de la bebida: ");
+                String nombre = sc.nextLine();
+                ((Bebidas) lista.get(index)).setNombre(nombre);
                 break;
             }
-            case 2:{
+            case 2: {
+                System.out.println("Ingrese precio: ");
+                double precio = sc.nextDouble();
+                ((Bebidas) lista.get(index)).setPrecio(precio);
                 break;
             }
-            case 3:{
+            case 3: {
+                System.out.println("Ingrese tam en mL: ");
+                int tam = sc.nextInt();
+                ((Bebidas) lista.get(index)).setTam(tam);
                 break;
             }
             default:
@@ -204,5 +213,5 @@ public class Lab3P2_HectorSabillon {
                 break;
         }
     }
-    
+
 }
