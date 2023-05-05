@@ -130,28 +130,30 @@ public class Lab3P2_HectorSabillon {
         double precio = sc.nextDouble();
         if (precio < 0) {
             System.out.println("El precio no puede ser negativo");
-        }
-        System.out.println("Ingrese estado de la comida:"
-                + "\n[0] <- Vencido"
-                + "\n[1] <- Comestible");
-        int a = sc.nextInt();
-        boolean estado;
-        switch (a) {
-            case 0: {
-                estado = false;
-                Comidas comida = new Comidas(estado, precio, nombre);
-                lista.add(comida);
-                break;
+        } else {
+            System.out.println("Ingrese estado de la comida:"
+                    + "\n[0] <- Vencido"
+                    + "\n[1] <- Comestible");
+            int a = sc.nextInt();
+            boolean estado;
+            switch (a) {
+                case 0: {
+                    estado = false;
+                    Comidas comida = new Comidas(estado, precio, nombre);
+                    lista.add(comida);
+                    break;
+                }
+                case 1: {
+                    estado = true;
+                    Comidas comida = new Comidas(estado, precio, nombre);
+                    lista.add(comida);
+                    break;
+                }
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
             }
-            case 1: {
-                estado = true;
-                Comidas comida = new Comidas(estado, precio, nombre);
-                lista.add(comida);
-                break;
-            }
-            default:
-                System.out.println("Opcion no valida");
-                break;
+
         }
     }
 
@@ -162,12 +164,17 @@ public class Lab3P2_HectorSabillon {
         double precio = sc.nextDouble();
         if (precio < 0) {
             System.out.println("El precio no puede ser negativo");
+        } else {
+            System.out.println("Ingrese tam en mL: ");
+            int tam = sc.nextInt();
+            if (tam > 0) {
+                Bebidas bebida = new Bebidas(tam, precio, nombre);
+                lista.add(bebida);
+            } else {
+                System.out.println("El tam ingresado no puede ser 0 o negativo");
+            }
         }
-        System.out.println("Ingrese tam en mL: ");
-        int tam = sc.nextInt();
 
-        Bebidas bebida = new Bebidas(tam, precio, nombre);
-        lista.add(bebida);
     }
 
     public static void listarComidas() {
