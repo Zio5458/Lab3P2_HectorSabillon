@@ -9,7 +9,7 @@ package lab3p2_hectorsabillon;
  * @author hdann
  */
 public class Comidas extends Productos {
-    
+
     private boolean estado;
 
     public Comidas(boolean estado, double precio, String nombre) {
@@ -43,11 +43,11 @@ public class Comidas extends Productos {
 
     @Override
     public String toString() {
-        return "Comidas{" + "estado=" + estado + super.toString() + '}';
+        if (estado == true) {
+            return "Comidas{" + "estado= Comestible " + super.toString() + '}';
+        } else {
+            return "Comidas{" + "estado= Vencido " + super.toString() + '}';
+        }
     }
 
-    
-    
-    
-    
 }

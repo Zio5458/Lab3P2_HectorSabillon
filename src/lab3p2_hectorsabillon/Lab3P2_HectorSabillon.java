@@ -81,32 +81,39 @@ public class Lab3P2_HectorSabillon {
                         System.out.println("Ingrese cantidad del producto a comprar: ");
                         int cant = sc.nextInt();
                         sc.nextLine();
-                        if (lista.get(index) instanceof Comidas) {
-                            total += ((Comidas) lista.get(index)).getPrecio() * cant;
-                            compras.getCompras().add(lista.get(index));
-                            compras.getCompras().add(cant);
-                        } else if (lista.get(index) instanceof Comidas) {
-                            total += ((Bebidas) lista.get(index)).getPrecio() * cant;
-                            compras.getCompras().add(lista.get(index));
-                            compras.getCompras().add(cant);
+                        if (cant > 0) {
+                            if (lista.get(index) instanceof Comidas) {
+                                total += ((Comidas) lista.get(index)).getPrecio() * cant;
+                                compras.getCompras().add(lista.get(index));
+                                compras.getCompras().add(cant);
+                            } else if (lista.get(index) instanceof Bebidas) {
+                                total += ((Bebidas) lista.get(index)).getPrecio() * cant;
+                                compras.getCompras().add(lista.get(index));
+                                compras.getCompras().add(cant);
+                            } else {
+                                System.out.println("Indice no valido");
+                            }
                         } else {
-                            System.out.println("Indice no valido");
+                            System.out.println("La cantidad no puede ser negativa y/o cero");
                         }
 
                         System.out.println("Desea comprar otro producto [s/n]: ");
                         resp = sc.nextLine().charAt(0);
-                    } while (resp != 's');
+                    } while (resp != 'n');
                     compras.setTotal(total);
                     lista.add(compras);
                     System.out.println(compras);
                     break;
                 }
                 case 7: {
-                    for (int i = 0; i < lista.size(); i++){
-                        if (lista.get(i) instanceof Compras){
+                    for (int i = 0; i < lista.size(); i++) {
+                        if (lista.get(i) instanceof Compras) {
                             System.out.println((Compras) lista.get(i));
                         }
                     }
+                    break;
+                }
+                case 8: {
                     break;
                 }
                 default:
@@ -121,6 +128,9 @@ public class Lab3P2_HectorSabillon {
         String nombre = sc.nextLine();
         System.out.println("Ingrese precio: ");
         double precio = sc.nextDouble();
+        if (precio < 0) {
+            System.out.println("El precio no puede ser negativo");
+        }
         System.out.println("Ingrese estado de la comida:"
                 + "\n[0] <- Vencido"
                 + "\n[1] <- Comestible");
@@ -130,11 +140,13 @@ public class Lab3P2_HectorSabillon {
             case 0: {
                 estado = false;
                 Comidas comida = new Comidas(estado, precio, nombre);
+                lista.add(comida);
                 break;
             }
             case 1: {
                 estado = true;
                 Comidas comida = new Comidas(estado, precio, nombre);
+                lista.add(comida);
                 break;
             }
             default:
@@ -148,6 +160,9 @@ public class Lab3P2_HectorSabillon {
         String nombre = sc.nextLine();
         System.out.println("Ingrese precio: ");
         double precio = sc.nextDouble();
+        if (precio < 0) {
+            System.out.println("El precio no puede ser negativo");
+        }
         System.out.println("Ingrese tam en mL: ");
         int tam = sc.nextInt();
 
@@ -183,6 +198,7 @@ public class Lab3P2_HectorSabillon {
         int aspecto = sc.nextInt();
         switch (aspecto) {
             case 1: {
+                sc.nextLine();
                 System.out.println("Ingrese nombre de la comida: ");
                 String nombre = sc.nextLine();
                 ((Comidas) lista.get(index)).setNombre(nombre);
@@ -191,7 +207,11 @@ public class Lab3P2_HectorSabillon {
             case 2: {
                 System.out.println("Ingrese precio: ");
                 double precio = sc.nextDouble();
-                ((Comidas) lista.get(index)).setPrecio(precio);
+                if (precio >= 0) {
+                    ((Comidas) lista.get(index)).setPrecio(precio);
+                } else {
+                    System.out.println("El precio no puede ser negativo");
+                }
                 break;
             }
             case 3: {
@@ -244,13 +264,21 @@ public class Lab3P2_HectorSabillon {
             case 2: {
                 System.out.println("Ingrese precio: ");
                 double precio = sc.nextDouble();
-                ((Bebidas) lista.get(index)).setPrecio(precio);
+                if (precio >= 0) {
+                    ((Bebidas) lista.get(index)).setPrecio(precio);
+                } else {
+                    System.out.println("El precio no puede ser negativo");
+                }
                 break;
             }
             case 3: {
                 System.out.println("Ingrese tam en mL: ");
                 int tam = sc.nextInt();
-                ((Bebidas) lista.get(index)).setTam(tam);
+                if (tam > 0) {
+                    ((Bebidas) lista.get(index)).setTam(tam);
+                } else {
+                    System.out.println("Numero invalido");
+                }
                 break;
             }
             default:
@@ -266,6 +294,7 @@ public class Lab3P2_HectorSabillon {
                 System.out.println("Ingrese indice de la comida a eliminar: ");
                 int index = sc.nextInt();
                 lista.remove(index);
+                System.out.println("Objeto eliminado con exito");
                 break;
             }
             case 2: {
@@ -273,6 +302,7 @@ public class Lab3P2_HectorSabillon {
                 System.out.println("Ingrese indice de la bebida a eliminar: ");
                 int index = sc.nextInt();
                 lista.remove(index);
+                System.out.println("Objeto eliminado con exito");
                 break;
             }
             default:
