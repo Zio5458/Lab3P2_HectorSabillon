@@ -61,16 +61,18 @@ public class Lab3P2_HectorSabillon {
                 + "\n[0] <- Vencido"
                 + "\n[1] <- Comestible");
         int a = sc.nextInt();
-        boolean estado = false;
+        boolean estado;
         switch (a) {
             case 0: {
                 estado = false;
                 Comidas comida = new Comidas(estado, precio, nombre);
+                lista.add(comida);
                 break;
             }
             case 1: {
                 estado = true;
                 Comidas comida = new Comidas(estado, precio, nombre);
+                lista.add(comida);
                 break;
             }
             default:
@@ -78,6 +80,18 @@ public class Lab3P2_HectorSabillon {
                 break;
         }
 
+    }
+    
+    public static void agregarBebida(){
+        System.out.println("Ingrese nombre de la bebida: ");
+        String nombre = sc.nextLine();
+        System.out.println("Ingrese precio: ");
+        double precio = sc.nextDouble();
+        System.out.println("Ingrese tam en mL: ");
+        int tam = sc.nextInt();
+        
+        Bebidas bebida = new Bebidas(tam, precio, nombre);
+        lista.add(bebida);
     }
 
 }
