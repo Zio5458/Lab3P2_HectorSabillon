@@ -15,6 +15,9 @@ public class Compras {
     private double total;
     private ArrayList compras = new ArrayList();
 
+    public Compras() {
+    }
+    
     public Compras(double total) {
         this.total = total;
     }
@@ -35,6 +38,16 @@ public class Compras {
         this.compras = compras;
     }
 
+    @Override
+    public String toString() {
+        return "Compras{" + "total=" + total + ", compras=\n" + compras + '}';
+    }
+
+    public void imprimirArreglo(){
+        for (int i = 0; i < compras.size(); i++){
+            System.out.println(i + " <-" + compras.get(i));
+        }
+    }
     
     
 }

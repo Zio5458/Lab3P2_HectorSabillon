@@ -68,17 +68,45 @@ public class Lab3P2_HectorSabillon {
                 }
                 case 6: {
                     int total = 0;
-                    System.out.println("---COMIDAS---");
-                    listarComidas();
-                    System.out.println("---BEBIDAS---");
-                    listarBebidas();
-                    
-                    System.out.println("Ingrese indice del producto a comprar: ");
-                    int index = sc.nextInt();
-                    
+                    char resp;
+                    Compras compras = new Compras();
+                    do {
+                        System.out.println("---COMIDAS---");
+                        listarComidas();
+                        System.out.println("---BEBIDAS---");
+                        listarBebidas();
+
+                        System.out.println("Ingrese indice del producto a comprar: ");
+                        int index = sc.nextInt();
+                        System.out.println("Ingrese cantidad del producto a comprar: ");
+                        int cant = sc.nextInt();
+                        sc.nextLine();
+                        if (lista.get(index) instanceof Comidas) {
+                            total += ((Comidas) lista.get(index)).getPrecio() * cant;
+                            compras.getCompras().add(lista.get(index));
+                            compras.getCompras().add(cant);
+                        } else if (lista.get(index) instanceof Comidas) {
+                            total += ((Bebidas) lista.get(index)).getPrecio() * cant;
+                            compras.getCompras().add(lista.get(index));
+                            compras.getCompras().add(cant);
+                        } else {
+                            System.out.println("Indice no valido");
+                        }
+
+                        System.out.println("Desea comprar otro producto [s/n]: ");
+                        resp = sc.nextLine().charAt(0);
+                    } while (resp != 's');
+                    compras.setTotal(total);
+                    lista.add(compras);
+                    System.out.println(compras);
                     break;
                 }
                 case 7: {
+                    for (int i = 0; i < lista.size(); i++){
+                        if (lista.get(i) instanceof Compras){
+                            System.out.println((Compras) lista.get(i));
+                        }
+                    }
                     break;
                 }
                 default:
@@ -253,5 +281,4 @@ public class Lab3P2_HectorSabillon {
         }
     }
 
-    
 }
